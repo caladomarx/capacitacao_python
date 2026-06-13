@@ -7,6 +7,8 @@ calculadora_atual = "basica"
 
 while True:
 
+    print("\n" * 50)
+
     # MENU SUPERIOR
 
     print("=====================================")
@@ -29,6 +31,7 @@ while True:
     # ENCERRAR PROGRAMA
 
     if opcao == "0":
+        print("\nEncerrando programa...")
         break
 
     # CALCULADORA DE TROCO
@@ -53,13 +56,32 @@ while True:
 
         calculadora_atual = "basica"
 
-        print("\n=== CALCULADORA BÁSICA ===")
+        while True:
 
-        try:
+            print("\n" * 50)
+            print("=== CALCULADORA BÁSICA ===")
+            print("Digite S para voltar ao menu.\n")
+            # PRIMEIRO NÚMER
 
-            resultado = float(
-                input("\nPrimeiro número: ")
-            )
+            while True:
+
+                entrada = input("Primeiro número: ")
+
+                if entrada.upper() == "S":
+                    break
+
+                try:
+
+                    resultado = float(entrada)
+                    break
+
+                except ValueError:
+
+                    print("Digite um número válido.")
+
+            if entrada.upper() == "S":
+                break
+            # LOOP DE OPERAÇÕE
 
             while True:
 
@@ -70,9 +92,28 @@ while True:
                 if operacao.upper() == "S":
                     break
 
-                numero = float(
-                    input("Próximo número: ")
-                )
+                if operacao not in ["+", "-", "*", "/"]:
+
+                    print("Operação inválida.")
+                    continue
+
+                # PRÓXIMO NÚMERO
+
+                while True:
+
+                    try:
+
+                        numero = float(
+                            input("Próximo número: ")
+                        )
+
+                        break
+
+                    except ValueError:
+
+                        print("Digite um número válido.")
+
+                # CÁLCULOS
 
                 if operacao == "+":
                     resultado += numero
@@ -84,21 +125,20 @@ while True:
                     resultado *= numero
 
                 elif operacao == "/":
+
+                    if numero == 0:
+
+                        print(
+                            "Não é possível dividir por zero."
+                        )
+
+                        continue
+
                     resultado /= numero
 
-                else:
-                    print("\nOperação inválida.")
-                    continue
-
-                print(f"\nResultado atual: {resultado}")
-
-        except ValueError:
-            print("\nDigite apenas números.")
-
-        except ZeroDivisionError:
-            print("\nNão é possível dividir por zero.")
-
-        input("\nPressione ENTER...")
+                print(
+                    f"\nResultado atual: {resultado}"
+                )
 
     # CALCULADORA DE RESISTÊNCIA
 
