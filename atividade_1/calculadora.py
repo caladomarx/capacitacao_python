@@ -93,44 +93,61 @@ while True:
 
         print(f"\nTroco: R$ {troco:.2f}")
 
-        # NOTAS E MOEDAS
+        # NOTAS
 
-        valores = [
-            20000,  # 200
-            10000,  # 100
-            5000,   # 50
-            2000,   # 20
-            1000,   # 10
-            500,    # 5
-            200,    # 2
-            100,    # 1
-            50,     # 0.50
-            25,     # 0.25
-            10,     # 0.10
-            5       # 0.05
+        notas = [
+            20000,
+            10000,
+            5000,
+            2000,
+            1000,
+            500,
+            200
         ]
 
-        print("\nNotas e moedas:")
+        print("\nNotas:")
 
-        for valor in valores:
+        resto = troco_centavos
 
-            quantidade = troco_centavos // valor
+        for nota in notas:
+
+            quantidade = resto // nota
 
             if quantidade > 0:
 
-                if valor >= 200:
+                texto = "nota" if quantidade == 1 else "notas"
 
-                    print(
-                        f"{quantidade} nota(s) de R$ {valor // 100}"
-                    )
+                print(
+                    f"{quantidade} {texto} de R$ {nota // 100}"
+                )
 
-                else:
+                resto %= nota
 
-                    print(
-                        f"{quantidade} moeda(s) de R$ {valor / 100:.2f}"
-                    )
+        # MOEDAS
 
-                troco_centavos %= valor
+        moedas = [
+            100,
+            50,
+            25,
+            10,
+            5
+        ]
+
+        print("\nMoedas:")
+
+        for moeda in moedas:
+
+            quantidade = resto // moeda
+
+            if quantidade > 0:
+
+                texto = "moeda" if quantidade == 1 else "moedas"
+
+                print(
+                    f"{quantidade} {texto} de R$ {moeda / 100:.2f}"
+                )
+
+                resto %= moeda
 
         input("\nPressione ENTER...")
 
