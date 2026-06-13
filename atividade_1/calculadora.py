@@ -1,6 +1,5 @@
 # MULTICALCULADORA
 
-# Variável que indica qual calculadora está selecionada
 calculadora_atual = "basica"
 
 # LOOP PRINCIPAL
@@ -31,6 +30,7 @@ while True:
     # ENCERRAR PROGRAMA
 
     if opcao == "0":
+
         print("\nEncerrando programa...")
         break
 
@@ -42,11 +42,95 @@ while True:
 
         print("\n=== CALCULADORA DE TROCO ===")
 
-        # FUTURAMENTE:
-        # pedir valor da compra
-        # pedir valor pago
-        # calcular troco
-        # mostrar notas e moedas
+        # VALOR DA COMPRA
+
+        while True:
+
+            try:
+
+                compra = float(
+                    input("\nValor da compra: R$ ")
+                )
+
+                break
+
+            except ValueError:
+
+                print("Digite um valor válido.")
+
+        # VALOR PAGO
+
+        while True:
+
+            try:
+
+                pago = float(
+                    input("Valor pago: R$ ")
+                )
+
+                if pago < compra:
+
+                    print(
+                        "O valor pago deve ser maior ou igual ao valor da compra."
+                    )
+
+                    continue
+
+                break
+
+            except ValueError:
+
+                print("Digite um valor válido.")
+
+        # CÁLCULO DO TROCO
+
+        compra_centavos = round(compra * 100)
+        pago_centavos = round(pago * 100)
+
+        troco_centavos = pago_centavos - compra_centavos
+
+        troco = troco_centavos / 100
+
+        print(f"\nTroco: R$ {troco:.2f}")
+
+        # NOTAS E MOEDAS
+
+        valores = [
+            20000,  # 200
+            10000,  # 100
+            5000,   # 50
+            2000,   # 20
+            1000,   # 10
+            500,    # 5
+            200,    # 2
+            100,    # 1
+            50,     # 0.50
+            25,     # 0.25
+            10,     # 0.10
+            5       # 0.05
+        ]
+
+        print("\nNotas e moedas:")
+
+        for valor in valores:
+
+            quantidade = troco_centavos // valor
+
+            if quantidade > 0:
+
+                if valor >= 200:
+
+                    print(
+                        f"{quantidade} nota(s) de R$ {valor // 100}"
+                    )
+
+                else:
+
+                    print(
+                        f"{quantidade} moeda(s) de R$ {valor / 100:.2f}"
+                    )
+
+                troco_centavos %= valor
 
         input("\nPressione ENTER...")
 
@@ -61,7 +145,8 @@ while True:
             print("\n" * 50)
             print("=== CALCULADORA BÁSICA ===")
             print("Digite S para voltar ao menu.\n")
-            # PRIMEIRO NÚMER
+
+            # PRIMEIRO NÚMERO
 
             while True:
 
@@ -81,7 +166,8 @@ while True:
 
             if entrada.upper() == "S":
                 break
-            # LOOP DE OPERAÇÕE
+
+            # LOOP DE OPERAÇÕES
 
             while True:
 
@@ -147,11 +233,7 @@ while True:
         calculadora_atual = "resistencia"
 
         print("\n=== CALCULADORA DE RESISTÊNCIA ===")
-
-        # FUTURAMENTE:
-        # escolher série ou paralelo
-        # informar resistores
-        # calcular resistência equivalente
+        print("Em desenvolvimento...")
 
         input("\nPressione ENTER...")
 
