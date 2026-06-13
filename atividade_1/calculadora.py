@@ -1,4 +1,3 @@
-
 # MULTICALCULADORA
 
 # Variável que indica qual calculadora está selecionada
@@ -40,9 +39,11 @@ while True:
 
         print("\n=== CALCULADORA DE TROCO ===")
 
+        # FUTURAMENTE:
         # pedir valor da compra
+        # pedir valor pago
         # calcular troco
-        # mostrar troco
+        # mostrar notas e moedas
 
         input("\nPressione ENTER...")
 
@@ -54,9 +55,38 @@ while True:
 
         print("\n=== CALCULADORA BÁSICA ===")
 
-        # pedir expressão
-        # calcular resultado
-        # tratamento de erros
+        try:
+
+            numero1 = float(input("\nPrimeiro número: "))
+
+            operacao = input("Operação (+, -, *, /): ")
+
+            numero2 = float(input("Segundo número: "))
+
+            if operacao == "+":
+                resultado = numero1 + numero2
+
+            elif operacao == "-":
+                resultado = numero1 - numero2
+
+            elif operacao == "*":
+                resultado = numero1 * numero2
+
+            elif operacao == "/":
+                resultado = numero1 / numero2
+
+            else:
+                print("\nOperação inválida.")
+                input("\nPressione ENTER...")
+                continue
+
+            print(f"\nResultado: {resultado}")
+
+        except ValueError:
+            print("\nDigite apenas números.")
+
+        except ZeroDivisionError:
+            print("\nNão é possível dividir por zero.")
 
         input("\nPressione ENTER...")
 
@@ -68,11 +98,14 @@ while True:
 
         print("\n=== CALCULADORA DE RESISTÊNCIA ===")
 
+        # FUTURAMENTE:
         # escolher série ou paralelo
         # informar resistores
         # calcular resistência equivalente
 
         input("\nPressione ENTER...")
+
+    # OPÇÃO INVÁLIDA
 
     else:
 
