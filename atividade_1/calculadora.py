@@ -57,30 +57,40 @@ while True:
 
         try:
 
-            numero1 = float(input("\nPrimeiro número: "))
+            resultado = float(
+                input("\nPrimeiro número: ")
+            )
 
-            operacao = input("Operação (+, -, *, /): ")
+            while True:
 
-            numero2 = float(input("Segundo número: "))
+                operacao = input(
+                    "\nOperação (+, -, *, /) ou S para sair: "
+                )
 
-            if operacao == "+":
-                resultado = numero1 + numero2
+                if operacao.upper() == "S":
+                    break
 
-            elif operacao == "-":
-                resultado = numero1 - numero2
+                numero = float(
+                    input("Próximo número: ")
+                )
 
-            elif operacao == "*":
-                resultado = numero1 * numero2
+                if operacao == "+":
+                    resultado += numero
 
-            elif operacao == "/":
-                resultado = numero1 / numero2
+                elif operacao == "-":
+                    resultado -= numero
 
-            else:
-                print("\nOperação inválida.")
-                input("\nPressione ENTER...")
-                continue
+                elif operacao == "*":
+                    resultado *= numero
 
-            print(f"\nResultado: {resultado}")
+                elif operacao == "/":
+                    resultado /= numero
+
+                else:
+                    print("\nOperação inválida.")
+                    continue
+
+                print(f"\nResultado atual: {resultado}")
 
         except ValueError:
             print("\nDigite apenas números.")
