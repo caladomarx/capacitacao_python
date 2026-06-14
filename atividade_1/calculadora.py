@@ -271,8 +271,7 @@ while True:
 
             try:
 
-                quantidade = int(
-                    input("\nQuantidade de resistores: ")
+                quantidade = int(input("\nQuantidade de resistores: ")
                 )
 
                 if quantidade < 2:
